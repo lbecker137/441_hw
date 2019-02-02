@@ -1,0 +1,29 @@
+<html>
+    <head>
+
+        <title>Accessing the DOM</title>
+
+        <script>
+          function userPrompt(){
+            userAnswer = prompt("Which path will you take? 1 or 2");
+          }
+        </script>
+
+    </head>
+
+    <body>
+        <div id="description">choose your own adventure description</div>
+        <div id= "game"> first choice </div>
+
+        <script>
+
+          //var userAnswer;
+
+          document.getElementById("description").innerHTML = "<h1> REVOLUTION </h1> This is a tale of revolution! \n Will you be on the winning side? let's find out!" ;
+          document.getElementById("game").innerHTML = " On a cold winter night you hear shouting in the streets outside your window. \n Do you 1) go outside and find out what the commotion is \n or \n 2) Stay inside and hide. ";
+
+          // I haven't called the user prompt function yet to ask the user what choice they would like
+          // if/else statements will be used to proceed from one choice to the next
+        </script>
+    </body>
+</html>
