@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Choose Your Own Adventure </title>
+    <meta name="author" content="Leah Becker">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+      body{
+      background: grey;
+    }
+    </style>
+
+    <script>
+      var turn = 1;
+      var current= 1;
+      var options = [
+      "A Brick comes through your window. Will you: 1) Throw it back or 2) run outside to confront the offender",
+      "There is a large crowd forming with a leader screaming about revolution. Will you: 1)Join the Revolution 2)Decide to watch from the sidelines",
+      "You hear someone get hit. Will you 1) shrug it off and go back to hiding or 2) Run out and hope you didn't actually hurt someone",
+      "There is a large crowd outside and you can't tell who threw the brick, but you can tell they're planning something. Do you: 1) Decide you have nothing better to do and join them"
+      + "or 2) quietly turn back into your house?",
+      ]
+        function userChoice(){
+          var userChoice = document.getElementById("choice").value;
+          var currentPath= document.getElementById("path");
+          var image= document.getElementById("image");
+          if(userChoice == 1 && turn ==1){
+            currentPath.innerHTML= options[0];
+            image.innerHTML("./images/crowd.jpg");
+            turn ++;
+            current = 1;
+
+          }
+          else if(userChoice== 2 && turn ==1){
+            currentPath.innerHTML= options[1];
+            turn ++;
+            current = 2;
+          }
+          else if( userChoice== 1 && turn == 2 && current == 1 ){
+            currentPath.innerHTML= options[2];
+            turn++;
+            current = 1;
+          }
+          else if(userChoice == 2 && turn == 2 && current == 2){
+            currentPath.innerHTML= options[3];
+            current = 2;
+          } else {
+            currentPath.innerHTML = "Invalid Choice"
+          }
+
+        }
+    </script>
+  </head>
+
+  <body>
+    <h1> Revolution </h1>
+    <div id="path">
+      <p>
+        You wake up to a commotion outside your window do you:
+        <br>
+        1. Close the shades and hide
+        <br>
+        or
+        <br>
+        2. Go outside and investigate
+      </p>
+    </div>
+
+    <div id= "image">
+      <img src="./images/night.png" height="100">
+    </div>
+
+    <p> Please choose 1 or 2 </p>
+    <input type="text" size="30" id="choice" value="">
+    <button id="btnSubmit" onclick= "userChoice()"> Click to choose </button>
+
+
+  </body>
+</html>
