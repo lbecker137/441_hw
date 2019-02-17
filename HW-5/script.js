@@ -2,7 +2,7 @@
 // Array for the back of the cards
 var cards = ["image1","image2","image3","image4", "image 5","image6", "image7", "image8", "image9", "image10"];
 
-var blankCard = "images/aceOfSpades.png";
+var blankCard = "images/blankCard";
 
 var actualCard = new Array();
 
@@ -10,14 +10,14 @@ var actualCard = new Array();
 
 function printCards(){
 
-  randomizeCards();
+  //randomizeCards();
 
   for(var i = 0; i < cards.length; i++){
-    document.getElementById(cards[i]).src=blankCard;
+    document.getElementById(cards[i]).src= "images/blankCard.JPG";
   }
 }
 
-function randomizeCards (){
+/*function randomizeCards (){
   var actualCardPath = ["aceOfSpades.PNG","eightOfDiamonds.PNG","kingOfHearts.JPG","tenOfClubs.PNG","twoOfSpades.PNG"];
 
   var count = [0,0,0,0,0];
@@ -36,3 +36,5 @@ function randomizeCards (){
 function flipImage(cardPlace){
   document.getElementById(actualCard[cardPlace]).src = actualCard[cardPlace];
 }
+
+*/
