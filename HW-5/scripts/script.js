@@ -12,8 +12,8 @@ function printCards(){
 
   //randomizeCards();
 
-  for(var i = 0; i < cards.length; i++){
-    document.getElementById(cards[i]).src= "images/blankCard.JPG";
+  for( var i = 0; i<cards.length; i++){
+    document.getElementById(cards[i]).src = blankCard;
   }
 }
 
