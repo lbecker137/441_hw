@@ -26,7 +26,7 @@ function randomizeCards (){
 
   while(actualCard.length < 10){
 
-    var randomNum = math.floor(math.random()* actualCardPath.length);
+    var randomNum = Math.floor(Math.random()* actualCardPath.length);
 
     if(count[randomNum] < 2){
       actualCard.push(actualImagePath[randomNum]);
