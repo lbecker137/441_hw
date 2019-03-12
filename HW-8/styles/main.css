@@ -1,20 +1,24 @@
 #square {
    width: 100px;
    height: 100px;
-   background: red;
+   background: #BFC6DF ;
    position: absolute;
    left: 0;
    top: 300;
  }
 
  .stuff{
-   background: blue;
+   background: #BFC6DF;
  }
 
  #third{
-   background: green;
+   background: #BFC6DF;
  }
 
  body{
-     background-color: burlywood;
+     background-color: grey;
+ }
+
+ #silhouette{
+   width: 40%;
  }
