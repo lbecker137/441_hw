@@ -1,13 +1,14 @@
+
 <!DOCTYPE html>
 <html>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="./scripts/main.js"></script>
     <link href="/styles/main.css" type="text/css" rel="stylesheet">
   </head>
 
   <body>
     <canvas id="myCanvas" height="600" width="800"></canvas>
+
     <script>
       class Square{
         constructor(x,y,color,width,height){
@@ -19,34 +20,43 @@
         }
 
           draw(){
-            ctx.fillstyle = this.color;
+            ctx.fillStyle = this.color;
             ctx.fillRect(this.x,this.y,this.width,this.height);
           }
 
       }
 
+      // Two objects. One for the autonymous sqaure. One for the user.
+
       var userSqare = new Square(20,20, "#66329F",25,25);
-      var otherSquare= new Square (20,20,"#3770613",25,25);
+      var otherSquare= new Square(20,20,"#3770613",25,25);
 
       var canvas = getElementById("myCanvas");
       var ctx= canvas.getContext("2d");
-      var ctx2= canvas.getContext("2d");
 
       var xMove= 20;
       var yMove= 20;
+      var collision;
+
+
+      setInterval(PlayGame(), 1000/60);
+
+      //Function for the entire game.
 
       function PlayGame(){
-        setInterval(update, 1000/60);
-
         moveSquare();
         userMove();
-        checkCollide();
+        collision = checkCollide();
+        if(collision == true){               //this is where I am checking
+          userSquare.width+=2;               // for a collision. I will change
+          otherSquare.height+=2;             // sizes, color and direction moving.
+        }
+
       }
 
       function moveSquare(){
         if(otherSquare.x + 19 >= 800 || otherSquare.x -19 <= 0){
           xMove *= -1;
-          otherSquare.draw();
         }
         if(otherSquare.y + 19 >= 600 || otherSquare.y -19 <=0){
           yMove *= -1;
@@ -56,6 +66,8 @@
         otherSquare.x += yMove;
 
       }
+
+// This was to allow the user to move their Square
 
       function userMove(){
         $(document).ready(function(){
@@ -82,13 +94,18 @@
         }
       }
 
+// collision check
       function checkCollide(){
-          return !(
-              ((object1.y + object1.height) < (object2.y)) ||
-              (object1.y > (object2.y + object2.height)) ||
-              ((object1.x + object1.width) < object2.x) ||
-              (object1.x > (object2.x + object2.width))
-          );
+          if(
+              ((userSquare.y + userSquare.height) < (otherSquare.y)) ||
+              (userSquare.y > (otherSquare.y + otherSquare.height)) ||
+              ((userSqare.x + userSqare.width) < otherSquare.x) ||
+              (userSquare.x > (otherSquare.x + otherSquare.width))
+          ){
+            return true;
+          }else{
+            return false;
+          }
       }
     </script>
   </body>
