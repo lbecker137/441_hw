@@ -6,6 +6,7 @@ var square1, square2;
 var direction;
 var questions;
 var squareArray = [];
+var collectableArray = []; 
 var lives = 3;
 $(document).ready(function(){
 
@@ -35,14 +36,13 @@ function setup()
         drawSquare();
     });
 
-    /*$.getJSON("data/collectables.json", function(data){
+    $.getJSON("data/collectables.json", function(data){
       for(var i = 0; i < data.collectables.length; i++)
       {
           collectableArray.push(new Collectable(data.collectables[i].x, data.collectables[i].y, data.collectables[i].h, data.collectables[i].w, data.collectables[i].url))
           console.log(data.collectables[i].url);
       }
-
-    });*/
+    });
 
 
 
@@ -107,7 +107,7 @@ function getKey(event)
 
     }
 
-    if( lives == 0){
+    if( lives <= 0){
       endGame();
 
     }
@@ -161,5 +161,5 @@ function hasCollided(object1, object2) {
 
 function endGame(){
   ctx.clearRect(0,0,canvas.height, canvas.width);
-  ctx.fillText("You lose :(", 10, 50); 
+  ctx.fillText("You lose :(", 10, 50);
 }
