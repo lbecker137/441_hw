@@ -88,6 +88,9 @@ function getKey(event)
     if(test || test2)
     {
         lives--;
+        if(lives == 0){
+          context.clearRect(0,0,canvas.width, canvas.height); 
+        }
         if(direction == "left")
         {
             moveRight();
