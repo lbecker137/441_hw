@@ -27,7 +27,7 @@ function setup()
     // create two objects
     square1 = new Square(100,100,50,50,"#0000FF");
     square2 = new Square(400,400,100,100,"#00FF00");
-    $.getJSON("data/info.json", function(data) {
+    $.getJSON("/data/info.json", function(data) {
         for(var i = 0; i < data.squares.length; i++)
         {
             squareArray.push(new Square(data.squares[i].x,data.squares[i].y, data.squares[i].h, data.squares[i].w, data.squares[i].color));
@@ -35,7 +35,7 @@ function setup()
         drawSquare();
     });
 
-    $.getJSON("data/collectables.json", function(data){
+    $.getJSON("/data/collectables.json", function(data){
       for(var i = 0; i < data.collectables.length; i++)
       {
           collectableArray.push(new Collectable(data.collectables[i].x, data.collectables[i].y, data.collectables[i].h, data.collectables[i].w, data.collectables[i].url))
