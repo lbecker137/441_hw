@@ -38,7 +38,7 @@ function setup()
     $.getJSON("data/collectables.json", function(data){
       for(var i = 0; i < data.collectables.length; i++)
       {
-          collectableArray.push(new Collectable(data.collectables.[i].x, data.collectables[i].y, data.collectables[i].h, data.collectables[i].w, collectables[i].url))
+          collectableArray.push(new Collectable(data.collectables.[i].x, data.collectables[i].y, data.collectables[i].h, data.collectables[i].w, data.collectables[i].url))
           console.log(data.collectables[i].url);
       }
 
