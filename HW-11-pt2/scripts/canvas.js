@@ -88,9 +88,6 @@ function getKey(event)
     if(test || test2)
     {
         lives--;
-        if(lives == 0){
-          ctx.clearRect(0,0,canvas.width, canvas.height); 
-        }
         if(direction == "left")
         {
             moveRight();
@@ -107,6 +104,11 @@ function getKey(event)
         {
             moveUp();
         }
+
+    }
+
+    if( lives == 0){
+      endGame();
 
     }
     drawSquare();
@@ -155,4 +157,9 @@ function hasCollided(object1, object2) {
         ((object1.x + object1.width) < object2.x) ||
         (object1.x > (object2.x + object2.width))
     );
+}
+
+function endGame(){
+  ctx.clearRect(0,0,canvas.height, canvas.width);
+  ctx.fillText("You lose :(", 10, 50); 
 }
