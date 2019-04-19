@@ -89,7 +89,7 @@ function getKey(event)
     {
         lives--;
         if(lives == 0){
-          context.clearRect(0,0,canvas.width, canvas.height); 
+          ctx.clearRect(0,0,canvas.width, canvas.height); 
         }
         if(direction == "left")
         {
