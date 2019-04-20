@@ -8,6 +8,8 @@ var questions;
 var squareArray = [];
 var collectableArray = [];
 var lives = 3;
+var score = 0;
+
 $(document).ready(function(){
 
     setup();
@@ -106,11 +108,6 @@ function getKey(event)
         }
 
     }
-
-    if( lives <= 0){
-      endGame();
-
-    }
     drawSquare();
 
 }
@@ -147,6 +144,9 @@ function drawSquare()
 
     ctx.font = "30px Arial";
     ctx.fillText("Lives: " + lives, 10, 50);
+    ctx.fillText("score: " + score, 10, 90);
+
+    checkEnd();
 
 }
 
@@ -159,7 +159,13 @@ function hasCollided(object1, object2) {
     );
 }
 
-function endGame(){
-  ctx.clearRect(0,0,canvas.height, canvas.width);
-  ctx.fillText("You lose :(", 10, 50);
+function checkEnd(){
+  if(lives <= 0){
+    ctx.font = "100px Arial"
+    ctx.fillText("You Lose :(", 300, 350);
+  }
+  if(score == 3){
+    ctx.font = "100px Arial"
+    ctx.fillText("You win! :D", 300, 400);
+  }
 }
