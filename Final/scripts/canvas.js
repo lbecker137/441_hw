@@ -11,6 +11,7 @@ var foodx = Math.floor(Math.random()*30+1)*20;
 var foody = Math.floor(Math.random()*30+1)*20;
 
 var score = 0;
+var checkEnd = 1;
 
 var xPosition = 20;
 var yPosition = 20;
@@ -34,8 +35,13 @@ function setup(){
   canvas = document.getElementById("myCanvas");
   ctx = canvas.getContext("2d");
 
-  setInterval(draw(),100);
+  if(checkEnd==1){
+    setInterval(draw,100);
+  }
 
+  if(checkEnd==0){
+    endGame();
+  }
 
 }
 
@@ -43,9 +49,9 @@ function draw(){
   ctx.drawImage(background,0,0);
   for(var i = 0; i <= snake.length; i++){
     ctx.fillStyle = "green";
-    ctx.fillRect( xPosition, 20, 20, 20);
+    ctx.fillRect( xPosition, yPosition, 20, 20);
   }
-  
+
   ctx.drawImage(fruit,foodx,foody,20,20);
 
   if(direction == "right"){
@@ -59,8 +65,9 @@ function draw(){
     yPosition -= 20;
   }
   else{
-    yPositon += 20;
+    yPosition += 20;
   }
+  //checkEnd();
 
 }
 
@@ -70,9 +77,11 @@ function getKey(event){
 
     if(actualLetter == "w"){
         direction = "up";
+        console.log(direction);
     }
     if(actualLetter == "s"){
         direction = "down";
+        console.log(direction);
     }
     if(actualLetter == "a"){
         direction = "left";
